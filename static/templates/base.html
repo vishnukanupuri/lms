@@ -1,0 +1,161 @@
+{%load static%}
+<html>
+<head>
+<title>LMS</title>
+<style>
+        body {
+            background-image: url('/static/templates/logo.png');
+	    background-repeat: no-repeat;
+	    background-position: center;	
+        }
+	.navbar {
+            width: 100%; /* Adjust the width as needed */
+            background-color: lightblue; /* Background color for the navbar */
+            position: fixed; /* Fixed position to keep it on the right */
+            left: 0; /* Align it to the right */
+            top: 0; /* Align it to the top */
+            /* Full height */
+            overflow-x: hidden; /* Disable horizontal scroll */
+            padding: 10px 0; /* Padding at the top */
+	        display: none;
+            flex-direction: row;
+        }
+
+        /* Style for the links inside the navigation bar */
+        .navbar a {
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 18px;
+            color: black;
+            display: inline-block;
+            text-align: center;
+        }
+
+        /* Change color on hover */
+        .navbar a:hover {
+            background-color: #575757;
+        }
+
+        /* Style for the main content */
+        .main-content {
+            
+            padding: 20px;
+	    transition: margin-right 0.3s; 
+        }
+	 .toggle-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 10px;
+            background-color: lightblue;
+            color: white;
+            cursor: pointer;
+	        z-index: 1000;
+	        border: none;
+            outline: none;
+	        display: block;
+        }
+	 .toggle-btn1 {
+            position: fixed;
+            top: 20px;
+            left: 80px;
+            padding: 10px;
+            background-color: lightblue;
+            color: white;
+            cursor: pointer;
+	    z-index: 1000;
+	    border: none;
+            outline: none;
+	    display: block;
+        }
+	 .toggle-btn2 {
+            position: fixed;
+            top: 20px;
+            left: 150px;
+            padding: 10px;
+            background-color: lightblue;
+            color: white;
+            cursor: pointer;
+	    z-index: 1000;
+	    border: none;
+            outline: none;
+	    display: block;
+        }
+ 
+        .toggle-btn3 {
+            position: fixed;
+            top: 20px;
+            right: 110px;
+            padding: 10px;
+            background-color: lightblue;
+            color: white;
+            cursor: pointer;
+	    z-index: 1000;
+	    border: none;
+            outline: none;
+	    display: block;
+        }
+
+        .toggle-btn4 {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 10px;
+            background-color: lightblue;
+            color: white;
+            cursor: pointer;
+	    z-index: 1000;
+	    border: none;
+            outline: none;
+	    display: block;
+        }
+	.toggle-btn div {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 4px 0;
+        }
+
+</style>
+</head>
+<body>
+
+ <div class="toggle-btn3">
+        
+        <a href="dep">Departments</a>
+ </div>
+ <div class="toggle-btn4">
+	
+    <form method="post" action="logout">
+        {%csrf_token%}
+        <button class="toggle-btn4">Log Out</button>
+    </form>
+</div>
+<div class="main-content" id="mainContent">
+<center><h1>SVUCE LMS</h1></center>
+<hr>
+{%block content%}
+{%endblock%}
+
+
+<div>
+<script>
+        function toggleNavbar() {
+            var navbar = document.getElementById('navbar');
+            var mainContent = document.getElementById('mainContent');
+            var toggleBtn = document.getElementById('toggleBtn');
+            
+            if (navbar.style.display === 'none' || navbar.style.display === '') {
+                navbar.style.display = 'block';
+                mainContent.style.marginRight = '220px'; /* Adjust margin when navbar is shown */
+                 /* Hide the toggle button */
+            } else {
+                navbar.style.display = 'none';
+                mainContent.style.marginRight = '0'; /* Remove margin when navbar is hidden */
+                toggleBtn.style.display = 'block'; /* Show the toggle button */
+            }
+        }
+    </script>
+
+</body>
+</html>

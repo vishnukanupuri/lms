@@ -1,0 +1,25 @@
+{%load static%}
+<html>
+<head>
+<title>Examination</title>
+<link rel="stylesheet" href="{% static 'quiz/style.css' %}" type="text/css">
+<script src="{% static 'quiz/script.js' %}"></script>
+</head>
+<body>
+	<h1 id="head1">Quiz Time!</h1>
+	<form >
+	{%for x in question%}
+		<label id="{{x.que_id}}"><h3>{{x.que_content}}</h3></label>
+		<div class="opt">
+		{%for y in x.answer_set.all%}
+		<input type="checkbox" id="{{y.ans_id}}" value="{{y.ans_id}}">{{y.ans_content}}</input><hr>
+
+		{%endfor%}
+		</div>
+	{%endfor%}
+	<button type="button" id="sub">Submit</button>
+
+
+	</form>
+</body>
+</html>
